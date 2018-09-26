@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}{% endblock %}
+{% block main %}
+    <h1>Accueil</h1>
+
+    <ul>
+        {% for product in products %}
+            <li> <a href="{{ path("product" , {product.getId}) }}">{{ product.getBrand |upper }}</a> </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
