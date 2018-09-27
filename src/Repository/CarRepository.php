@@ -2,41 +2,49 @@
 
 namespace App\Repository;
 
-
 use App\Entity\Car;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Symfony\Bridge\Doctrine\RegistryInterface;
 
-class CarRepository
+/**
+ * @method Car|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Car|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Car[]    findAll()
+ * @method Car[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ */
+class CarRepository extends ServiceEntityRepository
 {
-    private $cars;
-
-    public function __construct()
+    public function __construct(RegistryInterface $registry)
     {
-        $car = new Car();
-        $car->setBrand("Chrysler");
-        $car->setId(1);
-
-        $this->cars[]=$car;
-
-        $car = new Car();
-        $car->setBrand("Aston Martin");
-        $car->setId(12);
-
-        $this->cars[]=$car;
-
-        $car = new Car();
-        $car->setBrand("Porsche");
-        $car->setId(2);
-
-        $this->cars[]=$car;
+        parent::__construct($registry, Car::class);
     }
 
-    public function findAll():array {
-        return $this->cars;
+//    /**
+//     * @return Car[] Returns an array of Car objects
+//     */
+    /*
+    public function findByExampleField($value)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.exampleField = :val')
+            ->setParameter('val', $value)
+            ->orderBy('c.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
     }
+    */
 
-    public function findById($_id): Car{
-        foreach ($this->cars as $car){
-            if ($car->getId() == $_id) return $car;
-        }
+    /*
+    public function findOneBySomeField($value): ?Car
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.exampleField = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
     }
+    */
 }

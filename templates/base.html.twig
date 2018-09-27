@@ -9,10 +9,17 @@
     <body>
     {% block body %}
         {% block header %}
+            <header>
+                {{ include('layout/menu.html.twig') }}
+            </header>
+
         {% endblock %}
 
-        {% block main %}
-        {% endblock %}
+        <main>
+            {% block main %}
+            {% endblock %}
+        </main>
+
 
 
     {% endblock %}
