@@ -6,7 +6,7 @@
 
     <ul>
         {% for product in products %}
-            <li> <a href="{{ path("product" , {product.getId}) }}">{{ product.getBrand |upper }}</a> </li>
+            <li> <a href="{{ path("product" , {'productId':product.getId }) }}">{{ product.getBrand|upper }}</a> </li>
         {% endfor %}
     </ul>
 {% endblock %}

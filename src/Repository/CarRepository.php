@@ -15,19 +15,19 @@ class CarRepository
         $car->setBrand("Chrysler");
         $car->setId(1);
 
-        $cars[]=$car;
+        $this->cars[]=$car;
 
         $car = new Car();
         $car->setBrand("Aston Martin");
         $car->setId(12);
 
-        $cars[]=$car;
+        $this->cars[]=$car;
 
         $car = new Car();
         $car->setBrand("Porsche");
         $car->setId(2);
 
-        $cars[]=$car;
+        $this->cars[]=$car;
     }
 
     public function findAll():array {
@@ -35,6 +35,8 @@ class CarRepository
     }
 
     public function findById($_id): Car{
-
+        foreach ($this->cars as $car){
+            if ($car->getId() == $_id) return $car;
+        }
     }
 }

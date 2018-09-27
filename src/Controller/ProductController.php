@@ -11,7 +11,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/product/{productId}", name="product")
      */
-    public function index($productId)
+    public function index($productId, CarRepository $carRepo)
     {
         $product = $carRepo->findById($productId);
         return $this->render('product/product.html.twig', [
