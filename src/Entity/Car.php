@@ -29,7 +29,7 @@ class Car
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $type;
+    private $gearbox;
 
     public function getId(): ?int
     {
@@ -60,14 +60,14 @@ class Car
         return $this;
     }
 
-    public function getType(): ?int
+    public function getGearbox(): ?int
     {
-        return $this->type;
+        return $this->gearbox;
     }
 
-    public function setType(?int $type): self
+    public function setGearbox(?int $gearbox): self
     {
-        $this->type = $type;
+        $this->gearbox = $gearbox;
 
         return $this;
     }

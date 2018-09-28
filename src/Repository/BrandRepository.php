@@ -22,6 +22,14 @@ class BrandRepository extends ServiceEntityRepository
 //    /**
 //     * @return Brand[] Returns an array of Brand objects
 //     */
+
+    public function findAllById():array {
+        $qb = $this->createQueryBuilder('p')
+            ->indexBy('p','p.id')
+            ->getQuery();
+
+        return $qb->execute();
+    }
     /*
     public function findByExampleField($value)
     {

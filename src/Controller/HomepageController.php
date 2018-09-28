@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Brand;
+use App\Entity\Car;
 use App\Repository\CarRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,11 +15,16 @@ class HomepageController extends AbstractController
      */
     public function index()
     {
-        $carRepo = new CarRepository();
-        $products = $carRepo->findAll();
+        $products = $this->getDoctrine()
+            ->getRepository(Car::class)->findAll();
+
+        $brands = $this->getDoctrine()
+            ->getRepository(Brand::class)->findAllById();
+
         return $this->render('homepage.html.twig', [
             'controller_name' => 'HomepageController',
-            'products' => $products
+            'products' => $products,
+            'brands' => $brands
         ]);
     }
 }

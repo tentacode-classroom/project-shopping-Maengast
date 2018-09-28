@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
-    <h1>Produit {{ product.brand }}</h1>
+    <h1>Produit n° {{ product.id }}</h1>
+    <p>Marque : {{ brand.name }}</p>
+    <p>Boite à vitesse : {{ gearbox.name }} </p>
 {% endblock %}
 
