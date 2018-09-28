@@ -24,6 +24,13 @@ class ProductController extends AbstractController
         $gearbox = $this->getDoctrine()
             ->getRepository(Gearbox::class)->find($product->getGearbox());
 
+        $product->setViewCounter(+1);
+
+        $entityManager=$this->getDoctrine()->getManager();
+        $entityManager->persist($product);
+        $entityManager->flush();
+
+
         return $this->render('product/product.html.twig', [
             'controller_name' => 'ProductController',
             'product' => $product,

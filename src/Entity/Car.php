@@ -31,6 +31,11 @@ class Car
      */
     private $gearbox;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $viewCounter;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +73,18 @@ class Car
     public function setGearbox(?int $gearbox): self
     {
         $this->gearbox = $gearbox;
+
+        return $this;
+    }
+
+    public function getViewCounter(): ?int
+    {
+        return $this->viewCounter;
+    }
+
+    public function setViewCounter(?int $viewCounter): self
+    {
+        $this->viewCounter += $viewCounter;
 
         return $this;
     }
