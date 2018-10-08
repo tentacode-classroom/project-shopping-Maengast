@@ -16,10 +16,6 @@ class Car
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="integer", length=255, nullable=true)
-     */
-    private $brand;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -36,22 +32,17 @@ class Car
      */
     private $viewCounter;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Brand", inversedBy="cars")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $brand;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getBrand(): ?string
-    {
-        return $this->brand;
-    }
-
-    public function setBrand(?string $brand): self
-    {
-        $this->brand = $brand;
-
-        return $this;
-    }
 
     public function getDescription(): ?string
     {
@@ -85,6 +76,18 @@ class Car
     public function setViewCounter(?int $viewCounter): self
     {
         $this->viewCounter += $viewCounter;
+
+        return $this;
+    }
+
+    public function getBrand(): ?Brand
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(?Brand $brand): self
+    {
+        $this->brand = $brand;
 
         return $this;
     }
