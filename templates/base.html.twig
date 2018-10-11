@@ -9,13 +9,10 @@
     <body>
     {% block body %}
         {% block header %}
-            <header>
-                {{ include('layout/menu.html.twig') }}
-            </header>
-
+            {{ include('layout/menu.html.twig') }}
         {% endblock %}
 
-        <main>
+        <main class="container">
             {% block main %}
             {% endblock %}
         </main>
